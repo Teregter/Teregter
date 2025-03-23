@@ -1,0 +1,33 @@
+stages:
+  - build
+  - test
+  - package
+
+variables:
+  DEB_PACKAGE: Lab1.deb
+
+build:
+  stage: build
+  script:
+    - echo "Сборка программы..."
+    - make build
+  artifacts:
+    paths:
+      - lab
+
+test:
+  stage: test
+  script:
+    - echo "Запуск тестов..."
+    - make test
+  dependencies:
+    - build
+
+package:
+  stage: package
+  script:
+    - echo "Сборка .deb пакета..."
+    - make deb
+  artifacts:
+    paths:
+      - $DEB_PACKAGE
