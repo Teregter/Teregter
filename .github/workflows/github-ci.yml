@@ -1,0 +1,63 @@
+name: C CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: sudo apt-get update && sudo apt-get install -y g++ make dpkg
+
+      - name: Build Application
+        run: make build
+
+      - name: Run Tests
+        run: make test
+
+      - name: Package .deb
+        run: make deb
+
+      - name: Upload .deb Package
+        uses: actions/upload-artifact@v4
+        with:
+          name: Lab-deb-package
+          path: build/Lab1.deb
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Download .deb Package
+        uses: actions/download-artifact@v4
+        with:
+          name: Lab-deb-package
+          path: .
+
+      - name: Build Docker Image
+        run: |
+          docker build -t Lab-app .
+
+      - name: Run Docker Container
+        run: |
+          docker run --rm Lab-app --success
+
+      - name: Save Docker Image as Tar File
+        run: |
+          docker save -o Lab-app.tar Lab-app
+
+      - name: Upload Docker Image
+        uses: actions/upload-artifact@v4
+        with:
+          name: Lab-docker-image
+          path: Lab-app.tar
