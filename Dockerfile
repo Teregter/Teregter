@@ -4,7 +4,7 @@ FROM ubuntu:latest
 RUN apt-get update && apt-get install -y dpkg
 
 # Скопируем .deb пакет из артефакта в контейнер
-COPY Lab1.deb /tmp/
+COPY Labs.deb /tmp/
 
 # Установим пакет
 RUN dpkg -i /tmp/Lab1.deb
