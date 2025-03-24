@@ -15,7 +15,7 @@ test_cases=(
 for test in "${test_cases[@]}"; do
     input="${test%%:*}"
     expected="${test##*:}"
-    result=$(echo -n ./Lab1 | "$input")
+    result=$(echo -n "$input" | ./Lab1)
     
     if [[ "$result" -eq "$expected" ]]; then
         echo "Test passed: '$input' -> $result"
