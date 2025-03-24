@@ -19,9 +19,23 @@ jobs:
       - name: Build Application
         run: make build
 
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        
       - name: Run Tests
         run: make test
 
+  deb:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        
       - name: Package .deb
         run: make deb
 
@@ -32,7 +46,7 @@ jobs:
           path: Labs.deb
 
   deploy:
-    needs: build
+    needs: deb
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
