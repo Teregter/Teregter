@@ -9,6 +9,21 @@ SRCS = ./*.c
 # Путь к директории для сборки
 BUILD_DIR = ./build
 
+# Дефолтные зависимости
+DEPS = g++ make dpkg
+
+# Проверка и установка зависимостей
+install_deps:
+    @echo "Проверка и установка зависимостей..."
+    @for dep in $(DEPS); do \
+        if ! command -v $$dep &> /dev/null; then \
+            echo "$$dep не установлен, устанавливаем..."; \
+            sudo apt-get update && sudo apt-get install -y $$dep; \
+        else \
+            echo "$$dep уже установлен"; \
+        fi \
+    done
+
 # Сборка программы
 build:
 	@echo "Сборка программы..."
