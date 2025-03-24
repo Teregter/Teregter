@@ -18,7 +18,7 @@ build:
 # Проведение тестов
 test:
 	@echo "Запуск тестов..."
-	go test -v ./*.sh
+	go test -v ./test.sh
 
 # Очистка проекта
 clean:
