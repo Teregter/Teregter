@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <assert.h>
-#include "count_words.h" // Подключаем заголовочный файл с countWords()
 
 // Функция для тестирования
 void runTests() {
