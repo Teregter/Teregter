@@ -36,6 +36,6 @@ deb:
 	@echo "Architecture: amd64" >> Labs/DEBIAN/control
 	@echo "Maintainer: *** <***>" >> Labs/DEBIAN/control
 	@echo "Description: ***" >> Labs/DEBIAN/control
-	@dpkg-deb --build Lab1
+	@dpkg-deb --build Labs
 	@rm -rf countword
 
