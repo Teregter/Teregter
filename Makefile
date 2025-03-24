@@ -1,7 +1,7 @@
 .PHONY: all build test clean deb
 
 # Имя программы
-TARGET = Lab1
+TARGET = Labs
 
 # Путь к исходным файлам
 SRCS = ./*.c
@@ -52,5 +52,5 @@ deb:
 	@echo "Maintainer: *** <***>" >> Labs/DEBIAN/control
 	@echo "Description: ***" >> Labs/DEBIAN/control
 	@dpkg-deb --build Labs
-	@rm -rf countword
+	@rm -rf countwords
 
