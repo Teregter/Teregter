@@ -1,6 +1,6 @@
 #!/bin/bash
 
-gcc -o count_words count_words.c || { echo "Compilation failed"; exit 1; }
+gcc -o Lab1 Lab1.c || { echo "Compilation failed"; exit 1; }
 
 test_cases=(
     "Hello world:2"
@@ -15,7 +15,7 @@ test_cases=(
 for test in "${test_cases[@]}"; do
     input="${test%%:*}"
     expected="${test##*:}"
-    result=$(echo -n "$input" | ./count_words)
+    result=$(echo -n "$input" | ./Lab1)
     
     if [[ "$result" -eq "$expected" ]]; then
         echo "Test passed: '$input' -> $result"
