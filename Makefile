@@ -29,13 +29,13 @@ clean:
 deb:
 	@echo "Сборка .deb пакета..."
 	@mkdir -p Labs/usr/bin
-	@cp $(BUILD_DIR)/$(TARGET) Lab1/usr/bin/$(TARGET)
+	@cp $(BUILD_DIR)/$(TARGET) Labs/usr/bin/$(TARGET)
 	@mkdir -p Labs/DEBIAN
-	@echo "Package: $(TARGET)" > Lab1/DEBIAN/control
-	@echo "Version: 1.0" >> Lab1/DEBIAN/control
-	@echo "Architecture: amd64" >> Lab1/DEBIAN/control
-	@echo "Maintainer: *** <***>" >> Lab1/DEBIAN/control
-	@echo "Description: ***" >> Lab1/DEBIAN/control
+	@echo "Package: $(TARGET)" > Labs/DEBIAN/control
+	@echo "Version: 1.0" >> Labs/DEBIAN/control
+	@echo "Architecture: amd64" >> Labs/DEBIAN/control
+	@echo "Maintainer: *** <***>" >> Labs/DEBIAN/control
+	@echo "Description: ***" >> Labs/DEBIAN/control
 	@dpkg-deb --build Lab1
 	@rm -rf countword
 
