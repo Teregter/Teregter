@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y dpkg
 COPY Labs.deb /tmp/
 
 # Установим пакет
-RUN dpkg -i /tmp/Lab1.deb
+RUN dpkg -i /tmp/Labs.deb
 
 # Укажем правильный путь к исполнимому файлу
 ENTRYPOINT ["/usr/bin/Lab1"]
