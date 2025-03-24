@@ -1,7 +1,7 @@
 .PHONY: all build test clean deb
 
 # Имя программы
-TARGET = Labs
+TARGET = Lab1
 
 # Путь к исходным файлам
 SRCS = ./*.c
