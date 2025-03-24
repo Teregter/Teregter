@@ -39,7 +39,7 @@ jobs:
           path: Labs.deb
 
   deploy:
-    needs: deb
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
