@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <assert.h>
+#include "Lab1.c"
 
 // Функция для тестирования
 void runTests() {
