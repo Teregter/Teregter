@@ -28,13 +28,6 @@ jobs:
         
       - name: Run Tests
         run: make test
-
-  # deb:
-  #   needs: test
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout Repository
-  #       uses: actions/checkout@v4
         
       - name: Package .deb
         run: make deb
