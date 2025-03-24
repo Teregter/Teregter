@@ -15,6 +15,11 @@ build:
 	@mkdir -p $(BUILD_DIR)
 	@g++ $(SRCS) -o $(BUILD_DIR)/$(TARGET)
 
+# Проведение тестов
+test:
+	@echo "Запуск тестов..."
+	go test -v ./...
+
 # Очистка проекта
 clean:
 	@echo "Очистка временных файлов..."
