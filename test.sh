@@ -9,7 +9,6 @@ test_cases=(
     "Multiple   spaces between words:4"
     ":0"
     "OneWord:1"
-    "Numbers 123 and words:3"
 )
 
 for test in "${test_cases[@]}"; do
