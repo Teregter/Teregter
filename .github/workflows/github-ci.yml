@@ -18,26 +18,9 @@ jobs:
 
       - name: Build Application
         run: make build
-        
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        
+
       - name: Run Tests
         run: make test
-        
-  deb:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Install Dependencies
-        run: sudo apt-get update && sudo apt-get install -y g++ make dpkg
 
       - name: Package .deb
         run: make deb
@@ -46,10 +29,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Lab-deb-package
-          path: build/Lab1.deb
+          path: Labs.deb
 
   deploy:
-    needs: deb
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
