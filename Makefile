@@ -24,16 +24,16 @@ install_deps:
         	fi \
     	done
 
+# Проведение тестов
+test:
+	@echo "Запуск тестов..."
+	@bash test.sh
+
 # Сборка программы
 build:
 	@echo "Сборка программы..."
 	@mkdir -p $(BUILD_DIR)
 	@g++ $(SRCS) -o $(BUILD_DIR)/$(TARGET)
-
-# Проведение тестов
-test:
-	@echo "Запуск тестов..."
-	@bash test.sh
 
 # Очистка проекта
 clean:
