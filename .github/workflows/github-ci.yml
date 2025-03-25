@@ -32,15 +32,15 @@ jobs:
       - name: Run Tests
         run: make test
 
-  # deb:
-  #   needs: test
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout Repository
-  #       uses: actions/checkout@v4
+  deb:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-  #     - name: Install Dependencies
-  #       run: sudo apt-get update && sudo apt-get install -y g++ make dpkg
+      - name: Install Dependencies
+        run: sudo apt-get update && sudo apt-get install -y g++ make dpkg
         
       - name: Package .deb
         run: make deb
@@ -52,7 +52,7 @@ jobs:
           path: build/Labs.deb
 
   deploy:
-    needs: test
+    needs: deb
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
