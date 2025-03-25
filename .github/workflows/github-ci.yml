@@ -64,20 +64,20 @@ jobs:
           name: Lab-deb-package
           path: .
 
-      # - name: Build Docker Image
-      #   run: |
-      #     docker build -t lab-app .
+      - name: Build Docker Image
+        run: |
+          docker build -t lab-app .
 
-      # - name: Run Docker Container
-      #   run: |
-      #     docker run --rm lab-app --success
+      - name: Run Docker Container
+        run: |
+          docker run --rm lab-app --success
 
-      # - name: Save Docker Image as Tar File
-      #   run: |
-      #     docker save -o lab-app.tar lab-app
+      - name: Save Docker Image as Tar File
+        run: |
+          docker save -o lab-app.tar lab-app
 
-      # - name: Upload Docker Image
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: Lab-docker-image
-      #     path: lab-app.tar
+      - name: Upload Docker Image
+        uses: actions/upload-artifact@v4
+        with:
+          name: Lab-docker-image
+          path: lab-app.tar
